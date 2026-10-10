@@ -2,330 +2,166 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#102b25">
-<meta name="description" content="One Step Closer — আপনার আশেপাশের অচেনা সুন্দর জায়গা আবিষ্কার করুন।">
-<title>ONE STEP CLOSER — Discover Nearby</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102c25">
+<title>ONE STEP CLOSER — কাছের সৌন্দর্য আবিষ্কার করো</title>
 <style>
-:root{--bg:#f5f7f3;--green:#163d32;--lime:#d6f36a;--text:#17251f;--muted:#6e7b73;--white:#fff}
+:root{--bg:#f5f7f2;--green:#12382d;--lime:#d7f36b;--muted:#65736b}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;background:var(--bg);color:var(--text)}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-header{background:var(--green);color:white;padding:17px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.logo{font-size:19px;font-weight:900;letter-spacing:1.5px}
+body{margin:0;background:var(--bg);color:#17251e;font-family:system-ui,"Noto Sans Bengali",sans-serif}
+header{background:var(--green);color:white;padding:19px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-size:19px;font-weight:900;letter-spacing:1px}
 .logo span{color:var(--lime)}
-.nav{display:flex;gap:17px;align-items:center}
-.nav a{color:white;text-decoration:none;font-size:13px}
-.btn{border:0;border-radius:25px;padding:12px 18px;font-weight:bold}
-.btn-lime{background:var(--lime);color:var(--green)}
-.btn-dark{background:var(--green);color:white}
-.hero{background:var(--green);color:white;padding:50px 6% 65px;position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;width:270px;height:270px;border:1px solid #ffffff25;border-radius:50%;right:-70px;top:10px;box-shadow:0 0 0 35px #ffffff08,0 0 0 75px #ffffff05}
-.eyebrow{color:var(--lime);font-size:12px;font-weight:bold;letter-spacing:2px}
-h1{font-size:clamp(34px,7vw,65px);line-height:1.07;max-width:720px;margin:15px 0}
-.hero p{color:#d1ded7;line-height:1.8;max-width:530px}
-.searchbar{display:flex;gap:8px;max-width:600px;background:white;padding:7px;border-radius:14px;margin-top:25px;position:relative;z-index:1}
-.searchbar input{min-width:0;flex:1;border:0;outline:0;padding:10px;color:#17251f}
-.searchbar button{white-space:nowrap}
-.wrap{max-width:1150px;margin:auto;padding:30px 5%}
-.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
-.section-head h2{font-size:23px;margin:0}
-.section-head p{color:var(--muted);font-size:13px;margin:6px 0 0}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.filters select,.filters input{background:white;border:1px solid #dfe6df;padding:10px 12px;border-radius:10px;max-width:100%}
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.place-card{background:white;border-radius:17px;overflow:hidden;box-shadow:0 4px 18px #152d2010;cursor:pointer;transition:transform .2s}
-.place-card:hover{transform:translateY(-4px)}
-.place-img{height:190px;background:#dce8dc;position:relative;overflow:hidden}
-.place-img img{width:100%;height:100%;object-fit:cover;display:block}
-.tag{position:absolute;top:12px;left:12px;background:#ffffffed;padding:7px 10px;border-radius:20px;font-size:11px;font-weight:bold}
-.card-body{padding:16px}
-.card-body h3{margin:0 0 8px;font-size:18px}
-.location{color:var(--muted);font-size:12px}
-.card-body p{font-size:13px;line-height:1.65;color:#526158}
-.card-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #edf0ec;padding-top:12px;font-size:12px}
-.text-btn{border:0;background:none;color:#25694c;font-weight:bold}
-.empty{background:white;padding:25px;border-radius:14px;color:var(--muted);grid-column:1/-1;text-align:center}
-.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.feature{background:#e6eddf;padding:25px;border-radius:18px}
-.feature h3{margin-top:0}
-.feature p{color:#5c6c61;line-height:1.7;font-size:14px}
-.dna-options{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0}
-.dna-options button{border:1px solid #c9d6c9;background:white;border-radius:22px;padding:9px 13px}
-.dna-options button.active{background:var(--green);color:white}
-.rank-list{background:white;border-radius:18px;padding:18px}
-.rank-row{display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid #edf0ec}
-.rank-row:last-child{border-bottom:0}
-.rank-number{font-weight:900;color:#71904b;font-size:20px;width:28px}
-.rank-row div:nth-child(2){flex:1}
-.rank-row small{color:var(--muted)}
-.rank-row button{border:0;background:#eff4e9;border-radius:20px;padding:8px 11px}
-.cta{background:var(--green);color:white;border-radius:20px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.cta p{color:#d1ded7;line-height:1.6}
-footer{padding:28px 5%;background:#0c241e;color:#d1ded7;font-size:12px;text-align:center;line-height:1.9}
-.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:18px;z-index:5}
-.modal.show{display:flex}
-.modal-box{background:white;width:100%;max-width:500px;max-height:90vh;overflow:auto;border-radius:18px;padding:23px}
-.modal-top{display:flex;justify-content:space-between;align-items:center}
-.modal-top h2{margin:0}
-.close{border:0;background:#edf1eb;border-radius:50%;width:36px;height:36px;font-size:20px}
-.form-field{margin:14px 0}
-.form-field label{display:block;font-size:13px;font-weight:bold;margin-bottom:7px}
-.form-field input,.form-field select,.form-field textarea{width:100%;border:1px solid #dce4dc;border-radius:10px;padding:12px;background:white}
-.form-field textarea{min-height:85px;resize:vertical}
-.notice{font-size:12px;color:var(--muted);line-height:1.6}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#163d32;color:white;padding:13px 18px;border-radius:12px;display:none;z-index:8;max-width:90%;text-align:center}
-@media(max-width:720px){
- .nav a{display:none}
- .hero{padding:38px 5% 48px}
- .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
- .place-img{height:145px}
- .card-body{padding:12px}
- .card-body h3{font-size:15px}
- .card-body p{font-size:12px}
- .feature-grid{grid-template-columns:1fr}
- .section-head h2{font-size:20px}
- .cta{align-items:flex-start;flex-direction:column}
-}
-@media(max-width:390px){
- .cards{grid-template-columns:1fr}
- .place-img{height:200px}
- .searchbar{flex-wrap:wrap}
- .searchbar input{flex-basis:100%}
- .searchbar button{width:100%}
-}
+header small{color:#c9d9d0}
+main{max-width:1100px;margin:auto;padding:24px 16px}
+.hero{padding:28px 0 20px}
+.eyebrow{color:#46765c;font-weight:800;font-size:12px;letter-spacing:2px}
+h1{font-size:clamp(30px,7vw,54px);line-height:1.12;margin:10px 0}
+h1 span{color:#55834b}
+.intro{color:var(--muted);line-height:1.8;max-width:600px}
+.search{width:100%;padding:15px;border:1px solid #dce4da;border-radius:14px;font-size:16px;background:white;margin:14px 0}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:26px 0 14px}
+h2{font-size:22px;margin:0}
+.section-head p{font-size:13px;color:var(--muted);margin:4px 0}
+.slider{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}
+.place{position:relative;flex:0 0 min(82%,330px);height:340px;border-radius:22px;overflow:hidden;scroll-snap-align:start;background:#dfe8df;cursor:pointer;border:0;padding:0;text-align:left;color:white}
+.place img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+.place:hover img{transform:scale(1.04)}
+.place:after{content:"";position:absolute;inset:25% 0 0;background:linear-gradient(transparent,#071c16e8)}
+.place-info{position:absolute;z-index:1;bottom:0;left:0;padding:20px}
+.place-info h3{font-size:24px;margin:0 0 6px}
+.place-info p{margin:0;font-size:13px;color:#f1f5ef}
+.tag{display:inline-block;background:#d7f36b;color:#1c3422;padding:5px 9px;border-radius:30px;font-size:11px;font-weight:800;margin-bottom:9px}
+.districts{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}
+.district{background:white;border:1px solid #e1e7df;border-radius:13px;padding:14px;text-align:left;font:inherit;cursor:pointer}
+.district:hover,.district:focus{border-color:#5b8d62;background:#f0f8e9}
+.district strong{display:block;font-size:15px}
+.district small{color:var(--muted)}
+.panel{background:#e9f0e4;border-radius:20px;padding:20px;margin-top:30px}
+.panel p{line-height:1.7;color:#526459}
+footer{background:var(--green);color:#e1ebe4;padding:28px 16px;text-align:center;margin-top:35px;font-size:13px}
+.modal{display:none;position:fixed;inset:0;z-index:5;background:#071b16b8;padding:18px;overflow:auto}
+.modal.show{display:flex;align-items:center;justify-content:center}
+.dialog{background:white;border-radius:20px;max-width:560px;width:100%;overflow:hidden;max-height:92vh;overflow-y:auto}
+.dialog img{width:100%;height:230px;object-fit:cover}
+.dialog-body{padding:20px}
+.dialog-body p{line-height:1.8;color:#4f6056}
+.close{float:right;border:0;border-radius:10px;padding:10px 14px;background:#edf2e9;cursor:pointer;font-size:15px}
+select{padding:12px;border:1px solid #d4ded2;border-radius:12px;background:white;width:100%;font:inherit;margin:12px 0}
+@media(min-width:700px){.place{flex-basis:310px}.hero{padding-top:40px}}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="logo">ONE STEP <span>CLOSER.</span></div>
-  <nav class="nav">
-    <a href="#discover">Explore</a>
-    <a href="#dna">Travel DNA</a>
-    <a href="#ranking">Rankings</a>
-    <button class="btn btn-lime" onclick="openAdd()">+ Add a place</button>
-  </nav>
+  <div class="logo">ONE STEP <span>CLOSER</span></div>
+  <small>Discover nearby wonders 🌿</small>
 </header>
-
-<section class="hero">
-  <div class="eyebrow">YOUR NEIGHBOURHOOD IS AN ADVENTURE</div>
-  <h1>Not far away.<br>Just one step closer.</h1>
-  <p>দূরে যেতে হবে না। আপনার জেলা, উপজেলা আর আশেপাশেই লুকিয়ে আছে কত অচেনা সৌন্দর্য। খুঁজে দেখুন, নিজের জায়গাকে নতুন করে চিনুন।</p>
-  <div class="searchbar">
-    <input id="search" placeholder="জায়গা, জেলা বা খাবার খুঁজুন..." aria-label="Search places" onkeydown="if(event.key==='Enter')renderPlaces()">
-    <button class="btn btn-lime" onclick="renderPlaces()">Explore places ↗</button>
-  </div>
-</section>
-
 <main>
-<section class="wrap" id="discover">
-  <div class="section-head">
-    <div><h2>Explore nearby</h2><p>আপনার পরের ছোট্ট অভিযানের ঠিকানা</p></div>
-    <button class="text-btn" onclick="resetFilters()">Reset ↺</button>
-  </div>
-  <div class="filters">
-    <select id="district" onchange="renderPlaces()">
-      <option value="">সব জেলা</option>
-      <option>Sunamganj</option><option>Sylhet</option><option>Dhaka</option>
-      <option>Chattogram</option><option>Mymensingh</option><option>Habiganj</option>
-      <option>Moulvibazar</option><option>Netrokona</option><option>Bandarban</option>
-      <option>Rangamati</option><option>Khagrachhari</option><option>Feni</option>
-    </select>
-    <select id="category" onchange="renderPlaces()">
-      <option value="">সব ধরনের জায়গা</option>
-      <option value="Nature">প্রকৃতি</option><option value="Food">স্থানীয় খাবার</option>
-      <option value="Water">নদী ও জল</option><option value="Culture">ঐতিহ্য</option>
-    </select>
-  </div>
-  <div class="cards" id="placeCards"></div>
-</section>
+  <section class="hero">
+    <div class="eyebrow">YOUR NEXT DISCOVERY STARTS HERE</div>
+    <h1>দূরে নয়,<br><span>সৌন্দর্য আছে কাছেই।</span></h1>
+    <p class="intro">সময় বা বাজেট কম? নিজের জেলা, উপজেলা আর আশপাশের অচেনা সুন্দর জায়গাগুলো আবিষ্কার করো। এক পা এগিয়ে যাও।</p>
+    <input id="search" class="search" placeholder="🔎 জায়গা বা জেলার নাম লিখে খুঁজুন..." aria-label="জায়গা বা জেলা খুঁজুন">
+  </section>
 
-<section class="wrap" id="dna">
-  <div class="feature-grid">
-    <div class="feature">
-      <div class="eyebrow">FIND YOUR KIND OF ESCAPE</div>
-      <h2>Discover your Travel DNA.</h2>
-      <p>আপনি কেমন জায়গা ভালোবাসেন? আপনার পছন্দ বেছে নিন, তারপর আপনার জন্য উপযুক্ত জায়গা খুঁজুন।</p>
-      <div class="dna-options">
-        <button onclick="chooseDNA(this,'Nature')">🌿 Nature</button>
-        <button onclick="chooseDNA(this,'Water')">🌊 Water</button>
-        <button onclick="chooseDNA(this,'Food')">🍵 Local food</button>
-        <button onclick="chooseDNA(this,'Culture')">🏡 Culture</button>
-      </div>
-      <button class="btn btn-dark" onclick="applyDNA()">Show my places ↗</button>
+  <section>
+    <div class="section-head">
+      <div><h2>🔥 ট্রেন্ডিং জায়গা</h2><p>ছবিতে চাপ দিয়ে জায়গাটি সম্পর্কে জানো</p></div>
     </div>
-    <div class="feature" id="dnaResult">
-      <div class="eyebrow">SMALL TRIPS. BIG FEELINGS.</div>
-      <h2>Adventure starts close to home.</h2>
-      <p>নদীর পাড়, গ্রামের চায়ের দোকান, নিরিবিলি বিল কিংবা পুরোনো কোনো সেতু—সব জায়গারই আছে নিজস্ব গল্প। সেই গল্পগুলো আবিষ্কার করুন One Step Closer-এর সঙ্গে।</p>
+    <div class="slider" id="slider"></div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div><h2>🧭 ৬৪ জেলা আবিষ্কার</h2><p>নিজের জেলা বেছে নিয়ে শুরু করো</p></div>
     </div>
-  </div>
-</section>
+    <select id="division" aria-label="বিভাগ নির্বাচন">
+      <option value="">সব বিভাগ</option>
+      <option>ঢাকা</option><option>চট্টগ্রাম</option><option>রাজশাহী</option>
+      <option>খুলনা</option><option>বরিশাল</option><option>সিলেট</option>
+      <option>রংপুর</option><option>ময়মনসিংহ</option>
+    </select>
+    <div class="districts" id="districts"></div>
+  </section>
 
-<section class="wrap" id="ranking">
-  <div class="section-head">
-    <div><h2>Community favourites</h2><p>আবিষ্কার করুন মানুষের পছন্দের জায়গা</p></div>
-  </div>
-  <div class="rank-list" id="rankList"></div>
-  <p class="notice">নোট: এই তালিকা ডেমো ডেটা দিয়ে তৈরি। বাস্তব ভোট, জনপ্রিয়তার র‍্যাঙ্কিং ও ব্যবহারকারীর পোস্ট চালু করতে ব্যাকএন্ড সংযুক্ত করতে হবে।</p>
-</section>
-
-<section class="wrap">
-  <div class="cta">
-    <div><h2>Know a hidden gem?</h2><p>আপনার এলাকার অচেনা সুন্দর জায়গাটি সবার সঙ্গে ভাগ করে নিন।</p></div>
-    <button class="btn btn-lime" onclick="openAdd()">Share a place +</button>
-  </div>
-</section>
+  <section class="panel">
+    <h2>🌱 সৌন্দর্য খুঁজে পাও, ভাগ করে নাও</h2>
+    <p>তোমার এলাকার নদী, বিল, চায়ের দোকান, পুরোনো গাছ কিংবা অজানা দর্শনীয় জায়গার গল্পও একদিন অন্য কারও ভ্রমণের কারণ হতে পারে। পরবর্তী ধাপে জায়গা ও ছবি জমা দেওয়ার ফর্ম যোগ করব।</p>
+  </section>
 </main>
+<footer>ONE STEP CLOSER · কাছের সৌন্দর্য, সবার জন্য</footer>
 
-<footer>
-  <strong>ONE STEP CLOSER.</strong><br>
-  Discover local. Travel closer. Feel more.<br>
-  Made for the beauty hiding around Bangladesh.
-</footer>
-
-<div class="modal" id="addModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-box">
-    <div class="modal-top">
-      <h2 id="modalTitle">Share a hidden gem</h2>
-      <button class="close" onclick="closeAdd()" aria-label="Close">×</button>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="dialog">
+    <img id="modalImg" alt="">
+    <div class="dialog-body">
+      <button class="close" id="close" aria-label="বন্ধ করুন">✕ বন্ধ</button>
+      <div class="tag">DISCOVER BANGLADESH</div>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <p id="modalHow"></p>
     </div>
-    <p class="notice">আপনার এলাকার সুন্দর জায়গার তথ্য দিন। এই ডেমোতে তথ্য সাময়িকভাবে এই ব্রাউজারের তালিকায় যোগ হবে; অনলাইনে সবার কাছে পাঠাতে সার্ভার/ডেটাবেস লাগবে।</p>
-    <form id="addForm">
-      <div class="form-field"><label for="placeName">জায়গার নাম *</label><input id="placeName" required placeholder="যেমন: গোপন নদীর পাড়"></div>
-      <div class="form-field"><label for="placeDistrict">জেলা *</label>
-        <select id="placeDistrict" required>
-          <option value="">জেলা বেছে নিন</option>
-          <option>Sunamganj</option><option>Sylhet</option><option>Dhaka</option>
-          <option>Chattogram</option><option>Mymensingh</option><option>Habiganj</option>
-          <option>Moulvibazar</option><option>Netrokona</option><option>Bandarban</option>
-          <option>Rangamati</option><option>Khagrachhari</option><option>Feni</option>
-        </select>
-      </div>
-      <div class="form-field"><label for="placeCategory">ধরন *</label>
-        <select id="placeCategory" required>
-          <option value="Nature">প্রকৃতি</option><option value="Water">নদী ও জল</option>
-          <option value="Food">স্থানীয় খাবার</option><option value="Culture">ঐতিহ্য</option>
-        </select>
-      </div>
-      <div class="form-field"><label for="placeDesc">জায়গার বর্ণনা</label><textarea id="placeDesc" placeholder="কেন জায়গাটি বিশেষ? কীভাবে যাবেন?"></textarea></div>
-      <div class="form-field"><label for="placeMap">Google Maps লিংক (ঐচ্ছিক)</label><input id="placeMap" type="url" placeholder="https://maps.google.com/..."></div>
-      <button class="btn btn-dark" type="submit" style="width:100%">Add to this preview</button>
-    </form>
   </div>
 </div>
-<div class="toast" id="toast"></div>
 
 <script>
-const initialPlaces = [
- {id:1,name:"Tanguar Haor",district:"Sunamganj",category:"Water",desc:"বিস্তীর্ণ জলরাশি, মেঘের ছায়া আর নৌকায় ভেসে প্রকৃতির কাছাকাছি যাওয়ার অভিজ্ঞতা।",img:"https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80"},
- {id:2,name:"Sadapathor",district:"Sylhet",category:"Nature",desc:"পাথর, স্বচ্ছ পানির ধারা ও চারপাশের পাহাড়ি প্রকৃতি।",img:"https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=900&q=80"},
- {id:3,name:"Village Tea Stop",district:"Sunamganj",category:"Food",desc:"স্থানীয় চায়ের দোকানে একটু বিরতি, আড্ডা আর এলাকার মানুষের গল্প।",img:"https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=900&q=80"},
- {id:4,name:"Green Village Trail",district:"Mymensingh",category:"Nature",desc:"সবুজ পথ, গাছপালা আর গ্রামের শান্ত পরিবেশে ছোট্ট হাঁটাহাঁটি।",img:"https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80"},
- {id:5,name:"Riverside Evening",district:"Dhaka",category:"Water",desc:"নদীর ধারে বসে বিকেলের আলো আর বদলে যাওয়া আকাশ দেখা।",img:"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80"},
- {id:6,name:"Old Town Flavours",district:"Chattogram",category:"Food",desc:"স্থানীয় খাবারের স্বাদে পরিচিত এলাকার আরেকটি দিক আবিষ্কার করুন।",img:"https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80"}
+const places=[
+ {name:"লালাখাল",en:"Lalakhal",district:"সিলেট",division:"সিলেট",area:"জৈন্তাপুর, সিলেট",img:"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85",desc:"পাহাড়, সবুজ প্রকৃতি ও নদীর অপূর্ব দৃশ্যের জন্য পরিচিত একটি জনপ্রিয় ভ্রমণস্থান।",how:"যাওয়ার আগে স্থানীয় নৌকা চলাচল, আবহাওয়া ও যাতায়াতের খরচ যাচাই করে নাও।"},
+ {name:"সেন্ট মার্টিন",en:"Saint Martin",district:"কক্সবাজার",division:"চট্টগ্রাম",area:"টেকনাফ অঞ্চল, কক্সবাজার",img:"https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=900&q=85",desc:"নীল সমুদ্র, প্রবাল ও দ্বীপের প্রাকৃতিক সৌন্দর্যের জন্য পরিচিত।",how:"ভ্রমণের আগে বর্তমান সরকারি বিধিনিষেধ, জাহাজ চলাচল ও অনুমতি সম্পর্কে নিশ্চিত হও।"},
+ {name:"সাজেক",en:"Sajek Valley",district:"রাঙ্গামাটি",division:"চট্টগ্রাম",area:"বাঘাইছড়ি, রাঙ্গামাটি",img:"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85",desc:"পাহাড়ের সারি, মেঘ ও বিস্তৃত সবুজ দৃশ্যের জন্য জনপ্রিয়।",how:"যাত্রার আগে রাস্তার অবস্থা, স্থানীয় পরিবহন ও নিরাপত্তা নির্দেশনা যাচাই করো।"},
+ {name:"শাহ আরেফিন টিলা",en:"Shah Arfin Tila",district:"সিলেট",division:"সিলেট",area:"কোম্পানীগঞ্জ, সিলেট",img:"https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=85",desc:"সিলেট অঞ্চলের পাহাড়ি প্রকৃতি ও পাথুরে ভূদৃশ্য উপভোগের একটি জায়গা।",how:"স্থানীয়দের কাছে রাস্তা ও পরিবহন সম্পর্কে জেনে যাও; প্রকৃতি ও পরিবেশের ক্ষতি কোরো না।"}
 ];
-let places = [...initialPlaces];
-let selectedDNA = "";
-let nextId = 7;
-let toastTimer;
-
-function escapeHTML(value){
- return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const districts=[
+["ঢাকা","ঢাকা"],["গাজীপুর","ঢাকা"],["গোপালগঞ্জ","ঢাকা"],["কিশোরগঞ্জ","ঢাকা"],["মাদারীপুর","ঢাকা"],["মানিকগঞ্জ","ঢাকা"],["মুন্সিগঞ্জ","ঢাকা"],["নারায়ণগঞ্জ","ঢাকা"],["নরসিংদী","ঢাকা"],["রাজবাড়ী","ঢাকা"],["শরীয়তপুর","ঢাকা"],["ফরিদপুর","ঢাকা"],["টাঙ্গাইল","ঢাকা"],["চট্টগ্রাম","চট্টগ্রাম"],["কক্সবাজার","চট্টগ্রাম"],["কুমিল্লা","চট্টগ্রাম"],["ব্রাহ্মণবাড়িয়া","চট্টগ্রাম"],["চাঁদপুর","চট্টগ্রাম"],["ফেনী","চট্টগ্রাম"],["লক্ষ্মীপুর","চট্টগ্রাম"],["নোয়াখালী","চট্টগ্রাম"],["রাঙ্গামাটি","চট্টগ্রাম"],["বান্দরবান","চট্টগ্রাম"],["খাগড়াছড়ি","চট্টগ্রাম"],["খুলনা","খুলনা"],["বাগেরহাট","খুলনা"],["চুয়াডাঙ্গা","খুলনা"],["যশোর","খুলনা"],["ঝিনাইদহ","খুলনা"],["কুষ্টিয়া","খুলনা"],["মাগুরা","খুলনা"],["মেহেরপুর","খুলনা"],["নড়াইল","খুলনা"],["সাতক্ষীরা","খুলনা"],["রাজশাহী","রাজশাহী"],["বগুড়া","রাজশাহী"],["জয়পুরহাট","রাজশাহী"],["নওগাঁ","রাজশাহী"],["নাটোর","রাজশাহী"],["চাঁপাইনবাবগঞ্জ","রাজশাহী"],["পাবনা","রাজশাহী"],["সিরাজগঞ্জ","রাজশাহী"],["বরিশাল","বরিশাল"],["বরগুনা","বরিশাল"],["ভোলা","বরিশাল"],["ঝালকাঠি","বরিশাল"],["পটুয়াখালী","বরিশাল"],["পিরোজপুর","বরিশাল"],["সিলেট","সিলেট"],["হবিগঞ্জ","সিলেট"],["মৌলভীবাজার","সিলেট"],["সুনামগঞ্জ","সিলেট"],["রংপুর","রংপুর"],["দিনাজপুর","রংপুর"],["গাইবান্ধা","রংপুর"],["কুড়িগ্রাম","রংপুর"],["লালমনিরহাট","রংপুর"],["নীলফামারী","রংপুর"],["পঞ্চগড়","রংপুর"],["ঠাকুরগাঁও","রংপুর"],["ময়মনসিংহ","ময়মনসিংহ"],["জামালপুর","ময়মনসিংহ"],["নেত্রকোনা","ময়মনসিংহ"],["শেরপুর","ময়মনসিংহ"]
+];
+const slider=document.getElementById("slider"), districtBox=document.getElementById("districts");
+const modal=document.getElementById("modal");
+function showPlace(p){
+ document.getElementById("modalImg").src=p.img;
+ document.getElementById("modalImg").alt=p.name;
+ document.getElementById("modalTitle").textContent=p.name+" · "+p.en;
+ document.getElementById("modalDesc").textContent=p.desc;
+ document.getElementById("modalHow").textContent="কীভাবে যাবে: "+p.how;
+ modal.classList.add("show");
 }
-function renderPlaces(){
- const query=document.getElementById("search").value.trim().toLowerCase();
- const district=document.getElementById("district").value;
- const category=document.getElementById("category").value;
- const filtered=places.filter(p=>
-  (!query || (p.name+" "+p.district+" "+p.desc+" "+p.category).toLowerCase().includes(query)) &&
-  (!district || p.district===district) &&
-  (!category || p.category===category)
- );
- const box=document.getElementById("placeCards");
- if(!filtered.length){
-  box.innerHTML='<div class="empty">এই ফিল্টারে কোনো জায়গা পাওয়া যায়নি। অন্যভাবে খুঁজে দেখুন অথবা নতুন জায়গা যোগ করুন।</div>';
-  return;
- }
- box.innerHTML=filtered.map(p=>`
-  <article class="place-card" onclick="showPlace(${p.id})">
-   <div class="place-img">
-    <img src="${escapeHTML(p.img || 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80')}" alt="${escapeHTML(p.name)}" loading="lazy">
-    <span class="tag">${escapeHTML(p.category)}</span>
-   </div>
-   <div class="card-body">
-    <h3>${escapeHTML(p.name)}</h3>
-    <div class="location">📍 ${escapeHTML(p.district)}, Bangladesh</div>
-    <p>${escapeHTML(p.desc)}</p>
-    <div class="card-foot"><span>One step closer</span><button class="text-btn" onclick="event.stopPropagation();showPlace(${p.id})">Explore ↗</button></div>
-   </div>
-  </article>`).join("");
- renderRanking();
+function renderPlaces(list){
+ slider.innerHTML="";
+ list.forEach(p=>{
+  const b=document.createElement("button");b.className="place";
+  b.innerHTML=`<img src="${p.img}" alt="${p.name}" loading="lazy"><div class="place-info"><span class="tag">${p.district} জেলা</span><h3>${p.name}</h3><p>${p.area} · বিস্তারিত দেখুন ↗</p></div>`;
+  b.addEventListener("click",()=>showPlace(p));slider.appendChild(b);
+ });
 }
-function renderRanking(){
- const box=document.getElementById("rankList");
- box.innerHTML=places.slice(0,5).map((p,i)=>`
-  <div class="rank-row">
-   <span class="rank-number">0${i+1}</span>
-   <div><strong>${escapeHTML(p.name)}</strong><br><small>${escapeHTML(p.district)} · ${escapeHTML(p.category)}</small></div>
-   <button onclick="showPlace(${p.id})">View ↗</button>
-  </div>`).join("");
+function renderDistricts(){
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ const div=document.getElementById("division").value;
+ districtBox.innerHTML="";
+ const list=districts.filter(d=>(!div||d[1]===div)&&(!q||d[0].toLowerCase().includes(q)||d[1].toLowerCase().includes(q)||places.some(p=>p.name.toLowerCase().includes(q)&&p.district===d[0])));
+ list.forEach(d=>{
+  const b=document.createElement("button");b.className="district";
+  b.innerHTML=`<strong>${d[0]}</strong><small>${d[1]} বিভাগ</small>`;
+  b.addEventListener("click",()=>{
+   const known=places.filter(p=>p.district===d[0]);
+   document.getElementById("modalImg").src=known[0]?.img||"";
+   document.getElementById("modalTitle").textContent=d[0]+" জেলা";
+   document.getElementById("modalDesc").textContent=known.length?known.map(p=>p.name+" — "+p.desc).join("\n\n"):"এই জেলার দর্শনীয় স্থান, উপজেলা ও স্থানীয় তথ্যের তালিকা পরবর্তী ধাপে যোগ করা হবে।";
+   document.getElementById("modalHow").textContent="বিভাগ: "+d[1]+"।";
+   modal.classList.add("show");
+  });
+  districtBox.appendChild(b);
+ });
+ if(!list.length)districtBox.innerHTML="<p>কোনো ফল পাওয়া যায়নি। অন্য নাম দিয়ে খুঁজুন।</p>";
 }
-function showPlace(id){
- const p=places.find(x=>x.id===id);
- if(!p)return;
- let message=p.name+"\n"+p.district+", Bangladesh\n\n"+p.desc;
- if(p.map) message+="\n\nGoogle Maps: "+p.map;
- alert(message);
-}
-function resetFilters(){
- document.getElementById("search").value="";
- document.getElementById("district").value="";
- document.getElementById("category").value="";
- selectedDNA="";
- document.querySelectorAll(".dna-options button").forEach(b=>b.classList.remove("active"));
- renderPlaces();
-}
-function chooseDNA(button,category){
- selectedDNA=category;
- document.querySelectorAll(".dna-options button").forEach(b=>b.classList.remove("active"));
- button.classList.add("active");
-}
-function applyDNA(){
- if(!selectedDNA){showToast("আগে আপনার পছন্দের ধরন বেছে নিন।");return;}
- document.getElementById("category").value=selectedDNA;
- document.getElementById("discover").scrollIntoView({behavior:"smooth"});
- renderPlaces();
-}
-function openAdd(){document.getElementById("addModal").classList.add("show");}
-function closeAdd(){document.getElementById("addModal").classList.remove("show");}
-function showToast(message){
- const t=document.getElementById("toast");
- t.textContent=message;t.style.display="block";
- clearTimeout(toastTimer);
- toastTimer=setTimeout(()=>t.style.display="none",3200);
-}
-document.getElementById("addModal").addEventListener("click",e=>{
- if(e.target.id==="addModal")closeAdd();
+document.getElementById("search").addEventListener("input",()=>{
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ renderDistricts();
+ renderPlaces(places.filter(p=>(p.name+" "+p.en+" "+p.district+" "+p.area).toLowerCase().includes(q)));
 });
-document.getElementById("addForm").addEventListener("submit",e=>{
- e.preventDefault();
- const name=document.getElementById("placeName").value.trim();
- const district=document.getElementById("placeDistrict").value;
- const category=document.getElementById("placeCategory").value;
- const desc=document.getElementById("placeDesc").value.trim() || "এই জায়গার বিস্তারিত তথ্য শিগগির যোগ করা হবে।";
- const map=document.getElementById("placeMap").value.trim();
- if(!name||!district){showToast("জায়গার নাম ও জেলা দিন।");return;}
- places.unshift({id:nextId++,name,district,category,desc,map,img:""});
- document.getElementById("addForm").reset();
- closeAdd();
- resetFilters();
- showToast("জায়গাটি এই প্রিভিউতে যোগ হয়েছে।");
- document.getElementById("discover").scrollIntoView({behavior:"smooth"});
-});
-renderPlaces();
+document.getElementById("division").addEventListener("change",renderDistricts);
+document.getElementById("close").addEventListener("click",()=>modal.classList.remove("show"));
+modal.addEventListener("click",e=>{if(e.target===modal)modal.classList.remove("show")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")modal.classList.remove("show")});
+renderPlaces(places);renderDistricts();
 </script>
 </body>
 </html>
