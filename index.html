@@ -6,32 +6,44 @@
 <meta name="theme-color" content="#102c25">
 <title>ONE STEP CLOSER — কাছের সৌন্দর্য আবিষ্কার করো</title>
 <style>
-:root{--bg:#f5f7f2;--green:#12382d;--lime:#d7f36b;--muted:#65736b}
+:root{--bg:#f5f7f2;--green:#102c25;--lime:#d7f36b;--muted:#65736b}
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:#17251e;font-family:system-ui,"Noto Sans Bengali",sans-serif}
-header{background:var(--green);color:white;padding:19px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{font-size:19px;font-weight:900;letter-spacing:1px}
+header{position:absolute;z-index:3;top:0;left:0;width:100%;color:white;padding:20px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-size:18px;font-weight:900;letter-spacing:1.2px;text-decoration:none;color:white}
 .logo span{color:var(--lime)}
-header small{color:#c9d9d0}
-main{max-width:1100px;margin:auto;padding:24px 16px}
-.hero{padding:28px 0 20px}
-.eyebrow{color:#46765c;font-weight:800;font-size:12px;letter-spacing:2px}
-h1{font-size:clamp(30px,7vw,54px);line-height:1.12;margin:10px 0}
+.logo .logo-mark{display:inline-block;margin-left:8px;font-size:27px;transform:rotate(-35deg)}
+header small{color:#e2eee7;font-size:12px}
+main{max-width:1100px;margin:auto;padding:0 16px 28px}
+.hero{padding:106px 0 22px}
+.eyebrow{color:#46765c;font-weight:850;font-size:11px;letter-spacing:2px;margin:0 0 10px}
+h1{font-size:clamp(29px,7vw,48px);line-height:1.18;margin:0 0 12px;font-weight:900}
 h1 span{color:#55834b}
-.intro{color:var(--muted);line-height:1.8;max-width:600px}
-.search{width:100%;padding:15px;border:1px solid #dce4da;border-radius:14px;font-size:16px;background:white;margin:14px 0}
-.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:26px 0 14px}
+.intro{color:var(--muted);line-height:1.8;max-width:600px;margin:0 0 14px}
+.search{width:100%;padding:15px;border:1px solid #dce4da;border-radius:14px;font-size:16px;background:white;margin:10px 0 4px}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:27px 0 14px}
 h2{font-size:22px;margin:0}
 .section-head p{font-size:13px;color:var(--muted);margin:4px 0}
-.slider{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}
-.place{position:relative;flex:0 0 min(82%,330px);height:340px;border-radius:22px;overflow:hidden;scroll-snap-align:start;background:#dfe8df;cursor:pointer;border:0;padding:0;text-align:left;color:white}
-.place img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
-.place:hover img{transform:scale(1.04)}
-.place:after{content:"";position:absolute;inset:25% 0 0;background:linear-gradient(transparent,#071c16e8)}
-.place-info{position:absolute;z-index:1;bottom:0;left:0;padding:20px}
-.place-info h3{font-size:24px;margin:0 0 6px}
+.featured-wrap{position:relative}
+.slider{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:12px;scrollbar-width:none}
+.slider::-webkit-scrollbar{display:none}
+.place{position:relative;flex:0 0 100%;height:clamp(370px,66vh,590px);border-radius:24px;overflow:hidden;scroll-snap-align:center;background:#dfe8df;cursor:pointer;border:0;padding:0;text-align:left;color:white;isolation:isolate}
+.place img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s}
+.place:hover img{transform:scale(1.035)}
+.place:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,22,17,.53),transparent 35%,rgba(5,22,17,.08) 48%,rgba(5,22,17,.84) 100%)}
+.place-info{position:absolute;z-index:1;bottom:0;left:0;right:0;padding:22px}
+.photo-top{position:absolute;top:23px;left:22px;right:72px;z-index:1}
+.photo-eyebrow{font-size:10px;letter-spacing:1.7px;font-weight:850;color:#fff;text-transform:uppercase;margin-bottom:10px}
+.photo-slogan{font-size:clamp(23px,5.5vw,36px);font-weight:900;line-height:1.25;text-shadow:0 2px 12px #0007}
+.photo-slogan span{display:block;color:#e2f5a1}
+.tag{display:inline-block;background:var(--lime);color:#1c3422;padding:6px 10px;border-radius:30px;font-size:11px;font-weight:850;margin-bottom:9px}
+.place-info h3{font-size:clamp(28px,6vw,39px);margin:0 0 5px;line-height:1.15}
 .place-info p{margin:0;font-size:13px;color:#f1f5ef}
-.tag{display:inline-block;background:#d7f36b;color:#1c3422;padding:5px 9px;border-radius:30px;font-size:11px;font-weight:800;margin-bottom:9px}
+.arrow{position:absolute;z-index:2;right:17px;bottom:20px;width:53px;height:53px;border-radius:50%;display:grid;place-items:center;background:var(--lime);color:#163528;font-size:30px;font-weight:700;transform:rotate(-35deg);box-shadow:0 5px 20px #0003;pointer-events:none}
+.slider-controls{display:flex;justify-content:flex-end;align-items:center;gap:9px;margin-top:2px}
+.slider-controls button{width:40px;height:40px;border:1px solid #d7e0d5;border-radius:50%;background:white;color:var(--green);font-size:21px;cursor:pointer}
+.slide-count{font-size:12px;color:var(--muted);margin-right:auto}
 .districts{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}
 .district{background:white;border:1px solid #e1e7df;border-radius:13px;padding:14px;text-align:left;font:inherit;cursor:pointer}
 .district:hover,.district:focus{border-color:#5b8d62;background:#f0f8e9}
@@ -40,22 +52,31 @@ h2{font-size:22px;margin:0}
 .panel{background:#e9f0e4;border-radius:20px;padding:20px;margin-top:30px}
 .panel p{line-height:1.7;color:#526459}
 footer{background:var(--green);color:#e1ebe4;padding:28px 16px;text-align:center;margin-top:35px;font-size:13px}
-.modal{display:none;position:fixed;inset:0;z-index:5;background:#071b16b8;padding:18px;overflow:auto}
+.modal{display:none;position:fixed;inset:0;z-index:5;background:#071b16c9;padding:18px;overflow:auto}
 .modal.show{display:flex;align-items:center;justify-content:center}
 .dialog{background:white;border-radius:20px;max-width:560px;width:100%;overflow:hidden;max-height:92vh;overflow-y:auto}
-.dialog img{width:100%;height:230px;object-fit:cover}
+.dialog img{width:100%;height:230px;object-fit:cover;background:#e7eee4}
 .dialog-body{padding:20px}
-.dialog-body p{line-height:1.8;color:#4f6056}
+.dialog-body p{line-height:1.8;color:#4f6056;white-space:pre-line}
 .close{float:right;border:0;border-radius:10px;padding:10px 14px;background:#edf2e9;cursor:pointer;font-size:15px}
 select{padding:12px;border:1px solid #d4ded2;border-radius:12px;background:white;width:100%;font:inherit;margin:12px 0}
-@media(min-width:700px){.place{flex-basis:310px}.hero{padding-top:40px}}
+@media(min-width:700px){
+ main{padding-left:24px;padding-right:24px}
+ .hero{padding-top:115px}
+ .place{height:540px}
+ .photo-top{top:34px;left:34px}
+ .place-info{padding:30px}
+ .arrow{right:26px;bottom:27px;width:60px;height:60px;font-size:34px}
+}
+@media(prefers-reduced-motion:reduce){html,.slider{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">ONE STEP <span>CLOSER</span></div>
+  <a class="logo" href="#" aria-label="ONE STEP CLOSER হোম">ONE STEP <span>CLOSER</span><span class="logo-mark">↗</span></a>
   <small>Discover nearby wonders 🌿</small>
 </header>
+
 <main>
   <section class="hero">
     <div class="eyebrow">YOUR NEXT DISCOVERY STARTS HERE</div>
@@ -66,9 +87,16 @@ select{padding:12px;border:1px solid #d4ded2;border-radius:12px;background:white
 
   <section>
     <div class="section-head">
-      <div><h2>🔥 ট্রেন্ডিং জায়গা</h2><p>ছবিতে চাপ দিয়ে জায়গাটি সম্পর্কে জানো</p></div>
+      <div><h2>🔥 ট্রেন্ডিং জায়গা</h2><p>ছবি সোয়াইপ করো অথবা অ্যারোতে চাপ দাও</p></div>
     </div>
-    <div class="slider" id="slider"></div>
+    <div class="featured-wrap">
+      <div class="slider" id="slider" aria-label="ট্রেন্ডিং জায়গার ছবি"></div>
+      <div class="slider-controls">
+        <span class="slide-count" id="slideCount">01 / 04</span>
+        <button type="button" id="prevSlide" aria-label="আগের ছবি">←</button>
+        <button type="button" id="nextSlide" aria-label="পরের ছবি">→</button>
+      </div>
+    </div>
   </section>
 
   <section>
@@ -89,6 +117,7 @@ select{padding:12px;border:1px solid #d4ded2;border-radius:12px;background:white
     <p>তোমার এলাকার নদী, বিল, চায়ের দোকান, পুরোনো গাছ কিংবা অজানা দর্শনীয় জায়গার গল্পও একদিন অন্য কারও ভ্রমণের কারণ হতে পারে। পরবর্তী ধাপে জায়গা ও ছবি জমা দেওয়ার ফর্ম যোগ করব।</p>
   </section>
 </main>
+
 <footer>ONE STEP CLOSER · কাছের সৌন্দর্য, সবার জন্য</footer>
 
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -106,16 +135,27 @@ select{padding:12px;border:1px solid #d4ded2;border-radius:12px;background:white
 
 <script>
 const places=[
- {name:"লালাখাল",en:"Lalakhal",district:"সিলেট",division:"সিলেট",area:"জৈন্তাপুর, সিলেট",img:"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85",desc:"পাহাড়, সবুজ প্রকৃতি ও নদীর অপূর্ব দৃশ্যের জন্য পরিচিত একটি জনপ্রিয় ভ্রমণস্থান।",how:"যাওয়ার আগে স্থানীয় নৌকা চলাচল, আবহাওয়া ও যাতায়াতের খরচ যাচাই করে নাও।"},
- {name:"সেন্ট মার্টিন",en:"Saint Martin",district:"কক্সবাজার",division:"চট্টগ্রাম",area:"টেকনাফ অঞ্চল, কক্সবাজার",img:"https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=900&q=85",desc:"নীল সমুদ্র, প্রবাল ও দ্বীপের প্রাকৃতিক সৌন্দর্যের জন্য পরিচিত।",how:"ভ্রমণের আগে বর্তমান সরকারি বিধিনিষেধ, জাহাজ চলাচল ও অনুমতি সম্পর্কে নিশ্চিত হও।"},
- {name:"সাজেক",en:"Sajek Valley",district:"রাঙ্গামাটি",division:"চট্টগ্রাম",area:"বাঘাইছড়ি, রাঙ্গামাটি",img:"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85",desc:"পাহাড়ের সারি, মেঘ ও বিস্তৃত সবুজ দৃশ্যের জন্য জনপ্রিয়।",how:"যাত্রার আগে রাস্তার অবস্থা, স্থানীয় পরিবহন ও নিরাপত্তা নির্দেশনা যাচাই করো।"},
- {name:"শাহ আরেফিন টিলা",en:"Shah Arfin Tila",district:"সিলেট",division:"সিলেট",area:"কোম্পানীগঞ্জ, সিলেট",img:"https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=85",desc:"সিলেট অঞ্চলের পাহাড়ি প্রকৃতি ও পাথুরে ভূদৃশ্য উপভোগের একটি জায়গা।",how:"স্থানীয়দের কাছে রাস্তা ও পরিবহন সম্পর্কে জেনে যাও; প্রকৃতি ও পরিবেশের ক্ষতি কোরো না।"}
+ {name:"লালাখাল",en:"Lalakhal",district:"সিলেট",division:"সিলেট",area:"জৈন্তাপুর, সিলেট",img:"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=88",desc:"পাহাড়, সবুজ প্রকৃতি ও নদীর অপূর্ব দৃশ্যের জন্য পরিচিত একটি জনপ্রিয় ভ্রমণস্থান।",how:"যাওয়ার আগে স্থানীয় নৌকা চলাচল, আবহাওয়া ও যাতায়াতের খরচ যাচাই করে নাও।"},
+ {name:"সেন্ট মার্টিন",en:"Saint Martin",district:"কক্সবাজার",division:"চট্টগ্রাম",area:"টেকনাফ অঞ্চল, কক্সবাজার",img:"https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1400&q=88",desc:"নীল সমুদ্র, প্রবাল ও দ্বীপের প্রাকৃতিক সৌন্দর্যের জন্য পরিচিত।",how:"ভ্রমণের আগে বর্তমান সরকারি বিধিনিষেধ, জাহাজ চলাচল ও অনুমতি সম্পর্কে নিশ্চিত হও।"},
+ {name:"সাজেক",en:"Sajek Valley",district:"রাঙ্গামাটি",division:"চট্টগ্রাম",area:"বাঘাইছড়ি, রাঙ্গামাটি",img:"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=88",desc:"পাহাড়ের সারি, মেঘ ও বিস্তৃত সবুজ দৃশ্যের জন্য জনপ্রিয়।",how:"যাত্রার আগে রাস্তার অবস্থা, স্থানীয় পরিবহন ও নিরাপত্তা নির্দেশনা যাচাই করো।"},
+ {name:"শাহ আরেফিন টিলা",en:"Shah Arfin Tila",district:"সিলেট",division:"সিলেট",area:"কোম্পানীগঞ্জ, সিলেট",img:"https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=1400&q=88",desc:"সিলেট অঞ্চলের পাহাড়ি প্রকৃতি ও পাথুরে ভূদৃশ্য উপভোগের একটি জায়গা।",how:"স্থানীয়দের কাছে রাস্তা ও পরিবহন সম্পর্কে জেনে যাও; প্রকৃতি ও পরিবেশের ক্ষতি কোরো না।"}
 ];
+
 const districts=[
-["ঢাকা","ঢাকা"],["গাজীপুর","ঢাকা"],["গোপালগঞ্জ","ঢাকা"],["কিশোরগঞ্জ","ঢাকা"],["মাদারীপুর","ঢাকা"],["মানিকগঞ্জ","ঢাকা"],["মুন্সিগঞ্জ","ঢাকা"],["নারায়ণগঞ্জ","ঢাকা"],["নরসিংদী","ঢাকা"],["রাজবাড়ী","ঢাকা"],["শরীয়তপুর","ঢাকা"],["ফরিদপুর","ঢাকা"],["টাঙ্গাইল","ঢাকা"],["চট্টগ্রাম","চট্টগ্রাম"],["কক্সবাজার","চট্টগ্রাম"],["কুমিল্লা","চট্টগ্রাম"],["ব্রাহ্মণবাড়িয়া","চট্টগ্রাম"],["চাঁদপুর","চট্টগ্রাম"],["ফেনী","চট্টগ্রাম"],["লক্ষ্মীপুর","চট্টগ্রাম"],["নোয়াখালী","চট্টগ্রাম"],["রাঙ্গামাটি","চট্টগ্রাম"],["বান্দরবান","চট্টগ্রাম"],["খাগড়াছড়ি","চট্টগ্রাম"],["খুলনা","খুলনা"],["বাগেরহাট","খুলনা"],["চুয়াডাঙ্গা","খুলনা"],["যশোর","খুলনা"],["ঝিনাইদহ","খুলনা"],["কুষ্টিয়া","খুলনা"],["মাগুরা","খুলনা"],["মেহেরপুর","খুলনা"],["নড়াইল","খুলনা"],["সাতক্ষীরা","খুলনা"],["রাজশাহী","রাজশাহী"],["বগুড়া","রাজশাহী"],["জয়পুরহাট","রাজশাহী"],["নওগাঁ","রাজশাহী"],["নাটোর","রাজশাহী"],["চাঁপাইনবাবগঞ্জ","রাজশাহী"],["পাবনা","রাজশাহী"],["সিরাজগঞ্জ","রাজশাহী"],["বরিশাল","বরিশাল"],["বরগুনা","বরিশাল"],["ভোলা","বরিশাল"],["ঝালকাঠি","বরিশাল"],["পটুয়াখালী","বরিশাল"],["পিরোজপুর","বরিশাল"],["সিলেট","সিলেট"],["হবিগঞ্জ","সিলেট"],["মৌলভীবাজার","সিলেট"],["সুনামগঞ্জ","সিলেট"],["রংপুর","রংপুর"],["দিনাজপুর","রংপুর"],["গাইবান্ধা","রংপুর"],["কুড়িগ্রাম","রংপুর"],["লালমনিরহাট","রংপুর"],["নীলফামারী","রংপুর"],["পঞ্চগড়","রংপুর"],["ঠাকুরগাঁও","রংপুর"],["ময়মনসিংহ","ময়মনসিংহ"],["জামালপুর","ময়মনসিংহ"],["নেত্রকোনা","ময়মনসিংহ"],["শেরপুর","ময়মনসিংহ"]
+["ঢাকা","ঢাকা"],["গাজীপুর","ঢাকা"],["গোপালগঞ্জ","ঢাকা"],["কিশোরগঞ্জ","ঢাকা"],["মাদারীপুর","ঢাকা"],["মানিকগঞ্জ","ঢাকা"],["মুন্সিগঞ্জ","ঢাকা"],["নারায়ণগঞ্জ","ঢাকা"],["নরসিংদী","ঢাকা"],["রাজবাড়ী","ঢাকা"],["শরীয়তপুর","ঢাকা"],["ফরিদপুর","ঢাকা"],["টাঙ্গাইল","ঢাকা"],
+["চট্টগ্রাম","চট্টগ্রাম"],["কক্সবাজার","চট্টগ্রাম"],["কুমিল্লা","চট্টগ্রাম"],["ব্রাহ্মণবাড়িয়া","চট্টগ্রাম"],["চাঁদপুর","চট্টগ্রাম"],["ফেনী","চট্টগ্রাম"],["লক্ষ্মীপুর","চট্টগ্রাম"],["নোয়াখালী","চট্টগ্রাম"],["রাঙ্গামাটি","চট্টগ্রাম"],["বান্দরবান","চট্টগ্রাম"],["খাগড়াছড়ি","চট্টগ্রাম"],
+["খুলনা","খুলনা"],["বাগেরহাট","খুলনা"],["চুয়াডাঙ্গা","খুলনা"],["যশোর","খুলনা"],["ঝিনাইদহ","খুলনা"],["কুষ্টিয়া","খুলনা"],["মাগুরা","খুলনা"],["মেহেরপুর","খুলনা"],["নড়াইল","খুলনা"],["সাতক্ষীরা","খুলনা"],
+["রাজশাহী","রাজশাহী"],["বগুড়া","রাজশাহী"],["জয়পুরহাট","রাজশাহী"],["নওগাঁ","রাজশাহী"],["নাটোর","রাজশাহী"],["চাঁপাইনবাবগঞ্জ","রাজশাহী"],["পাবনা","রাজশাহী"],["সিরাজগঞ্জ","রাজশাহী"],
+["বরিশাল","বরিশাল"],["বরগুনা","বরিশাল"],["ভোলা","বরিশাল"],["ঝালকাঠি","বরিশাল"],["পটুয়াখালী","বরিশাল"],["পিরোজপুর","বরিশাল"],
+["সিলেট","সিলেট"],["হবিগঞ্জ","সিলেট"],["মৌলভীবাজার","সিলেট"],["সুনামগঞ্জ","সিলেট"],
+["রংপুর","রংপুর"],["দিনাজপুর","রংপুর"],["গাইবান্ধা","রংপুর"],["কুড়িগ্রাম","রংপুর"],["লালমনিরহাট","রংপুর"],["নীলফামারী","রংপুর"],["পঞ্চগড়","রংপুর"],["ঠাকুরগাঁও","রংপুর"],
+["ময়মনসিংহ","ময়মনসিংহ"],["জামালপুর","ময়মনসিংহ"],["নেত্রকোনা","ময়মনসিংহ"],["শেরপুর","ময়মনসিংহ"]
 ];
-const slider=document.getElementById("slider"), districtBox=document.getElementById("districts");
+
+const slider=document.getElementById("slider");
+const districtBox=document.getElementById("districts");
 const modal=document.getElementById("modal");
+
 function showPlace(p){
  document.getElementById("modalImg").src=p.img;
  document.getElementById("modalImg").alt=p.name;
@@ -124,27 +164,88 @@ function showPlace(p){
  document.getElementById("modalHow").textContent="কীভাবে যাবে: "+p.how;
  modal.classList.add("show");
 }
+
 function renderPlaces(list){
  slider.innerHTML="";
  list.forEach(p=>{
-  const b=document.createElement("button");b.className="place";
-  b.innerHTML=`<img src="${p.img}" alt="${p.name}" loading="lazy"><div class="place-info"><span class="tag">${p.district} জেলা</span><h3>${p.name}</h3><p>${p.area} · বিস্তারিত দেখুন ↗</p></div>`;
-  b.addEventListener("click",()=>showPlace(p));slider.appendChild(b);
+  const b=document.createElement("button");
+  b.className="place";
+  b.type="button";
+  b.setAttribute("aria-label",p.name+" সম্পর্কে বিস্তারিত দেখুন");
+  b.innerHTML=`
+   <img src="${p.img}" alt="${p.name}" loading="lazy">
+   <div class="photo-top">
+    <div class="photo-eyebrow">YOUR NEXT DISCOVERY STARTS HERE</div>
+    <div class="photo-slogan">দূরে নয়,<span>সৌন্দর্য আছে কাছেই।</span></div>
+   </div>
+   <div class="place-info">
+    <span class="tag">${p.district} জেলা</span>
+    <h3>${p.name}</h3>
+    <p>${p.area} · বিস্তারিত দেখুন ↗</p>
+   </div>
+   <span class="arrow" aria-hidden="true">→</span>`;
+  b.addEventListener("click",()=>showPlace(p));
+  slider.appendChild(b);
  });
+ updateSlideCount();
 }
+
+function updateSlideCount(){
+ const count=document.getElementById("slideCount");
+ const cards=[...slider.querySelectorAll(".place")];
+ if(!cards.length){
+  count.textContent="কোনো জায়গা পাওয়া যায়নি";
+  return;
+ }
+ let index=0,best=Infinity;
+ const sliderLeft=slider.getBoundingClientRect().left;
+ cards.forEach((card,i)=>{
+  const distance=Math.abs(card.getBoundingClientRect().left-sliderLeft);
+  if(distance<best){best=distance;index=i}
+ });
+ count.textContent=String(index+1).padStart(2,"0")+" / "+String(cards.length).padStart(2,"0");
+}
+
+function slideBy(direction){
+ const card=slider.querySelector(".place");
+ if(!card)return;
+ const distance=card.getBoundingClientRect().width+14;
+ if(direction>0 && slider.scrollLeft+slider.clientWidth>=slider.scrollWidth-8){
+  slider.scrollTo({left:0,behavior:"smooth"});
+ }else if(direction<0 && slider.scrollLeft<=8){
+  slider.scrollTo({left:slider.scrollWidth,behavior:"smooth"});
+ }else{
+  slider.scrollBy({left:direction*distance,behavior:"smooth"});
+ }
+}
+
+document.getElementById("nextSlide").addEventListener("click",()=>slideBy(1));
+document.getElementById("prevSlide").addEventListener("click",()=>slideBy(-1));
+slider.addEventListener("scroll",()=>window.requestAnimationFrame(updateSlideCount));
+
 function renderDistricts(){
  const q=document.getElementById("search").value.trim().toLowerCase();
  const div=document.getElementById("division").value;
  districtBox.innerHTML="";
- const list=districts.filter(d=>(!div||d[1]===div)&&(!q||d[0].toLowerCase().includes(q)||d[1].toLowerCase().includes(q)||places.some(p=>p.name.toLowerCase().includes(q)&&p.district===d[0])));
+ const list=districts.filter(d=>
+  (!div||d[1]===div)&&
+  (!q||d[0].toLowerCase().includes(q)||d[1].toLowerCase().includes(q)||
+   places.some(p=>p.name.toLowerCase().includes(q)&&p.district===d[0]))
+ );
  list.forEach(d=>{
-  const b=document.createElement("button");b.className="district";
+  const b=document.createElement("button");
+  b.className="district";
+  b.type="button";
   b.innerHTML=`<strong>${d[0]}</strong><small>${d[1]} বিভাগ</small>`;
   b.addEventListener("click",()=>{
    const known=places.filter(p=>p.district===d[0]);
-   document.getElementById("modalImg").src=known[0]?.img||"";
+   const image=document.getElementById("modalImg");
+   image.src=known[0]?.img||"";
+   image.alt=known[0]?.name||d[0];
    document.getElementById("modalTitle").textContent=d[0]+" জেলা";
-   document.getElementById("modalDesc").textContent=known.length?known.map(p=>p.name+" — "+p.desc).join("\n\n"):"এই জেলার দর্শনীয় স্থান, উপজেলা ও স্থানীয় তথ্যের তালিকা পরবর্তী ধাপে যোগ করা হবে।";
+   document.getElementById("modalDesc").textContent=known.length
+    ?known.map(p=>p.name+" — "+p.desc).join("\n\n")
+    :"এই জেলার দর্শনীয় স্থান, উপজেলা ও স্থানীয় তথ্যের তালিকা পরবর্তী ধাপে যোগ করা হবে।";
    document.getElementById("modalHow").textContent="বিভাগ: "+d[1]+"।";
    modal.classList.add("show");
   });
@@ -152,16 +253,21 @@ function renderDistricts(){
  });
  if(!list.length)districtBox.innerHTML="<p>কোনো ফল পাওয়া যায়নি। অন্য নাম দিয়ে খুঁজুন।</p>";
 }
+
 document.getElementById("search").addEventListener("input",()=>{
  const q=document.getElementById("search").value.trim().toLowerCase();
  renderDistricts();
- renderPlaces(places.filter(p=>(p.name+" "+p.en+" "+p.district+" "+p.area).toLowerCase().includes(q)));
+ renderPlaces(places.filter(p=>
+  (p.name+" "+p.en+" "+p.district+" "+p.area).toLowerCase().includes(q)
+ ));
 });
 document.getElementById("division").addEventListener("change",renderDistricts);
 document.getElementById("close").addEventListener("click",()=>modal.classList.remove("show"));
 modal.addEventListener("click",e=>{if(e.target===modal)modal.classList.remove("show")});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")modal.classList.remove("show")});
-renderPlaces(places);renderDistricts();
+
+renderPlaces(places);
+renderDistricts();
 </script>
 </body>
 </html>
